@@ -1,5 +1,30 @@
+:root {
+	--bg-color: #f5f5f5;
+	--text-color: #333;
+	--header-bg: #FAEBD7;
+	--nav-bg: #e0e0e0;
+	--link-color: darkblue;
+	--link-hower-color: #0056b3;
+	--main-border: 1px solid #ccc;
+	--card-bg: #fff;
+}
+
+
+[data-theme="dark"] {
+	--bg-color: #222;
+	--text-color: #d4d4d4;
+	--header-bg: #444;
+	--nav-bg: #333;
+	--link-color: #7a9dfc;
+	--link-hower-color: #a0c0ff;
+	--main-border: 1px solid #555;
+	--card-bg: #333;
+}
+
+
 body {
-	background-color: #f5f5f5;
+	background-color: var(--bg-color);
+	color: var(--text-color);
 	font-family: Arial, sans-serif;
 	margin: 0;
 	padding: 0;
@@ -7,7 +32,7 @@ body {
 
 
 h1 {
-	color: #333;
+	color: var(--text-color);
 	text-align: center;
 text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 	padding: 20px 0;
@@ -15,29 +40,48 @@ text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 
 
 nav {
-	background-color: #e0e0e0;
+	background-color: var(--nav-bg);
 	padding: 10px;
-	text-align: center;
+	display: flex;
+	justify-content: center;
+	gap: 20px;
 }
 
 
 nav a {
 	margin-right: 15px;
 	text-decoration: none;
-	color: darkblue;
+	color: var(--link-color);
 	font-weight: bold;
-	transistion: color 0.3s ease;
+	transition: color 0.3s ease;
+}
+
+
+nav ul {
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+	display: flex;
+	gap: 20px;
+}
+
+
+nav li {
+	margin: 0;
 }
 
 
 nav a:hover {
-	color: #0056b3;
+	color: var(--;ink-hover-color);
 	text-decoration: underline;
 }
 
 
 header {
-	background-color: #FAEBD7;
+	background-color: var(--header-bg);
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	position: sticky;
+	top: 0;
 }
 
 
@@ -45,7 +89,7 @@ main {
 	max-width: 800px;
 	margin: 20px auto;
 	padding: 0 20px;
-	border: 1px solid #ccc;
+	border: var(--main-border);
 }
 
 
@@ -59,10 +103,212 @@ ul li {
 	margin: 10px 0;
 }
 
+img {
+		max-width: 100%;
+		height: auto;
+		display: block;
+	}
+	
+.gallery {
+	margin-top: 40px;
+}
 
+.gallery h2 {
+	text-align: center;
+	color: var(--text-color);
+	margin-bottom: 20px;
+}
+
+.gallery.grid {
+	display: grid;
+	hrid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+	gap: 20px;
+}
+
+.gallery-item {
+	background-color: var(--card-bg);
+	border-radius: 8px;
+	overflow: hidden;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	transistion: transform 0.3s ease;
+}
+
+.gallery-item:hover {
+	transform: translateY(-5px);
+}
+
+.gallery-item img {
+	width: 100%;
+	height: 200px;
+	object-fit: cover;
+	display: block;
+}
+
+
+/* Стили для модального окна */
+.modal {
+    display: none; /* Окно скрыто по умолчанию */
+    position: fixed; /* Фиксированное позиционирование */
+    z-index: 1000; /* Чтобы было поверх всех элементов */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9); /* Темный полупрозрачный фон */
+    opacity: 0; /* Начальная прозрачность для анимации */
+    transition: opacity 0.3s ease; /* Плавное появление */
+}
+
+/* Класс для показа модалки (будет добавляться через JS) */
+.modal.show {
+    display: flex; /* Показываем окно */
+    justify-content: center; /* Центрируем по горизонтали */
+    align-items: center; /* Центрируем по вертикали */
+    opacity: 1; /* Делаем полностью непрозрачным */
+}
+
+/* Контент модального окна */
+.modal-content {
+    max-width: 90%; /* Ширина контента */
+    max-height: 90%; /* Высота контента */
+    position: relative; /* Для позиционирования крестика */
+}
+
+/* Кнопка закрытия (крестик) */
+.close-modal {
+    position: absolute;
+    top: -40px;
+    right: -40px;
+    color: white;
+    font-size: 40px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close-modal:hover {
+    color: #ccc; /* Цвет при наведении */
+}
+
+/* Само изображение в модалке */
+.modal-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+}
+
+/* Подпись к изображению */
+.modal-caption {
+    color: white;
+    text-align: center;
+    margin-top: 15px;
+    font-size: 18px;
+}
+
+/* Стили для секции с контактами */
+.contact-info {
+  margin-bottom: 40px;
+}
+
+.contact-info h2,
+.contact-form h2 {
+  color: var(--text-color);
+  border-bottom: 2px solid var(--link-color);
+  padding-bottom: 10px;
+}
+
+/* Стили для самой формы */
+.contact-form {
+  background-color: var(--card-bg);
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+#feedbackForm {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: var(--text-color);
+}
+
+input, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+  box-sizing: border-box; /* Чтобы padding не влиял на ширину */
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+textarea {
+  resize: vertical; /* Разрешаем изменять размер только по вертикали */
+  min-height: 120px;
+  font-family: Arial, sans-serif;
+}
+
+button[type="submit"] {
+  background-color: var(--link-color);
+  color: white;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+  align-self: flex-start; /* Кнопка прижимается к левому краю */
+}
+
+button[type="submit"]:hover {
+  background-color: var(--link-hover-color);
+}
+
+/* Стиль для валидации браузера */
+input:invalid, textarea:invalid {
+  border-color: #ff4444;
+}
+
+input:focus, textarea:focus {
+  outline: none;
+  border-color: var(--link-color);
+  box-shadow: 0 0 5px rgba(0, 85, 179, 0.3);
+}
+/* Адаптив для модалки на мобильных */
+
+
+@media (max-width: 768px) {
+    .close-modal {
+        top: -30px;
+        right: 0;
+        font-size: 30px;
+    }
+    
+    .modal-content {
+        max-width: 95%;
+        max-height: 95%;
+    }
+}
+	
 @media (max-width: 600px) {
 	h1 {
 		font-size: 24px;
+	}
+	
+	nav {
+		flex-direction: column;
+		gap: 10px;
 	}
 	
 	nav a {
@@ -73,9 +319,18 @@ ul li {
 	main {
 		padding: 0 10px;
 	}
+	
 }
 
-
+@media (max-width: 480px) {
+    .gallery-grid {
+        gap: 10px;
+    }
+    .gallery-item {
+        border-radius: 4px;
+    }
+}
+	
 
 
 

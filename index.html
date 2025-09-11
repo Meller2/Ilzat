@@ -14,9 +14,33 @@
       <a href="about.html">Обо мне</a>
       <a href="contacts.html">Контакты</a>
     </nav>
+	<button id="themeToggle">🌙 Тёмная</button>
 </header>
 <main>
     <p>Это главная страница. Здесь я учусь делать сайт на HTML и CSS.</p>
-  </main>
+	<img src="https://imagine-public.x.ai/imagine-public/images/2ef13ae6-3076-4e0f-a007-a951253f228c.png?cache=1" alt="Пример изображения">
+  <section class="gallery">
+  <h2>Мои работы</h2>
+  <div class="gallery-grid">
+  <div class="gallery-item"><img src="https://picsum.photos/400/300?random=1" alt="Работа 1"></div>
+    <div class="gallery-item"><img src="https://picsum.photos/400/300?random=2" alt="Работа 2"></div>
+	  <div class="gallery-item"><img src="https://picsum.photos/400/300?random=3" alt="Работа 3"></div>
+	    <div class="gallery-item"><img src="https://picsum.photos/400/300?random=4" alt="Работа 4"></div>
+		  <div class="gallery-item"><img src="https://picsum.photos/400/300?random=5" alt="Работа 5"></div>
+		    <div class="gallery-item"><img src="https://picsum.photos/400/300?random=6" alt="Работа 6"></div>
+			</div>
+			</section>
+			</main>
+    <div class="modal" id="imageModal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span> <!-- Крестик для закрытия -->
+            <img class="modal-image" src="" alt=""> <!-- Сюда подставится нужная картинка -->
+            <div class="modal-caption"></div> <!-- Сюда подставится подпись -->
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+   </main>
+   <script src="script.js"></script>
   </body>
 </html>
